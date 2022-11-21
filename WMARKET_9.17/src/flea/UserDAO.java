@@ -63,8 +63,8 @@ public class UserDAO {
 		String sql = "select * from user";
 		ArrayList<UserVO> list = new ArrayList<UserVO>();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
 			while(rs.next()) {
 				UserVO vo = new UserVO();
 				vo.setId(rs.getString(1));

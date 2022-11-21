@@ -25,8 +25,8 @@ public class ClosedBidDAO {
         String sql = "select * from closedbid where pNumber='"+pNumber+"'";
         ClosedBidVO closedBidVO = new ClosedBidVO();
         try {
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            rs = pstmt.executeQuery();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
             while(rs.next()) {
                 closedBidVO.setpNumber(rs.getInt(1));
                 closedBidVO.setBidMaxID(rs.getString(2));

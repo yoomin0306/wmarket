@@ -128,9 +128,9 @@ public class ProductDAO {
         String sql = "select * from product where pNumber < ? and available = 1 order by pNumber desc";
         ArrayList<ProductVO> list = new ArrayList<ProductVO>();
         try {
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, getNext());
-            rs = pstmt.executeQuery();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, getNext());
+            rs = stmt.executeQuery();
             while(rs.next()) {
                 ProductVO vo = new ProductVO();
                 vo.setpNumber(rs.getInt(1));
@@ -155,9 +155,9 @@ public class ProductDAO {
         String sql = "select * from product where pNumber < ? and available = 0 order by pNumber desc";
         ArrayList<ProductVO> list = new ArrayList<ProductVO>();
         try {
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, getNext());
-            rs = pstmt.executeQuery();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, getNext());
+            rs = stmt.executeQuery();
             while(rs.next()) {
                 ProductVO vo = new ProductVO();
                 vo.setpNumber(rs.getInt(1));
@@ -181,9 +181,9 @@ public class ProductDAO {
         String sql = "select * from product where pNumber < ? and id ='"+id+"'and available = 1 order by pNumber desc";
         ArrayList<ProductVO> list = new ArrayList<ProductVO>();
         try {
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, getNext());
-            rs = pstmt.executeQuery();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, getNext());
+            rs = stmt.executeQuery();
             while(rs.next()) {
                 ProductVO vo = new ProductVO();
                 vo.setpNumber(rs.getInt(1));
@@ -207,9 +207,9 @@ public class ProductDAO {
         String sql = "select * from product where pNumber < ? and id ='"+id+"'and available = 0 order by pNumber desc";
         ArrayList<ProductVO> list = new ArrayList<ProductVO>();
         try {
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, getNext());
-            rs = pstmt.executeQuery();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, getNext());
+            rs = stmt.executeQuery();
             while(rs.next()) {
                 ProductVO vo = new ProductVO();
                 vo.setpNumber(rs.getInt(1));
