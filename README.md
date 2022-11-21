@@ -5,7 +5,7 @@
 # 시연 주소
 http://localhost:8080/WMARKET_9.17/Main.jsp
 
-임의 ID / PW
+임의 ID / PW <br>
 admin / 1234 (관리자) <br>
 cheolsu / 1 <br>
 yuri / 2 <br>
