@@ -10,7 +10,7 @@ public class KickedUserDAO {
     //기본 생성자
     public KickedUserDAO() { //DB연결 초기화
         try {
-            String dbURL = "jdbc:mysql://192.168.55.162:3306/FleaMarket";
+            String dbURL = "jdbc:mysql://localhost:3306/FleaMarket";
             String dbID = "root";
             String dbPassword = "1234";
             Class.forName("com.mysql.jdbc.Driver");
