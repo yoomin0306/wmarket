@@ -135,7 +135,7 @@ const countDownTimer = function (id, date) {
 	// 로그인 했을 때 화면
 	}else {
 %>
-	<div align="right" style="padding-right: 10%; padding-top:5px;"><%=new UserDAO().getName(sessionID) %>님 &emsp; 예치금: <%=new UserDAO().account(sessionID) %>원 &emsp; <a href="Logout.jsp">로그아웃</a> &emsp; <a href="UserInfo_UI.jsp">내 정보</a> &emsp; <a href="MyPage.jsp">내 상점</a> &emsp; <a href="Upload_UI.jsp">상품 등록</a></div>
+	<div align="right" style="padding-right: 10%; padding-top:5px;"><a href="UserInfo_UI.jsp"><%=new UserDAO().getName(sessionID) %>님</a> &emsp; 예치금: <%=new UserDAO().account(sessionID) %>원 &emsp; <a href="Logout.jsp">로그아웃</a></div>
 <%
 	}
 %>
@@ -150,15 +150,43 @@ const countDownTimer = function (id, date) {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="d-flex" action="Main.jsp" method="post">
+      <form class="d-flex me-auto" action="Main.jsp" method="post">
         <input class="form-control me-2" type="text" name="_search" placeholder="상품명 또는 #판매자명" aria-label="Search" value="<%=search %>">
         <input class="img_button bg-light" type="image" src="img/search.png" alt="검색">
       </form>
+      
+      <%
+      // 로그인 X
+      if(sessionID == null) {
+    	  %>
+          <ul class="navbar-nav me-5">
+          <li class="nav-item">
+            <a class="nav-link active me-3" onclick="alert('로그인이 필요합니다.');" href="Login_UI.jsp">상품 등록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active me-3" onclick="alert('로그인이 필요합니다.');" href="Login_UI.jsp">내 상점</a>
+          </li>
+          </ul>
+          <%
+      // 관리자 로그인
+      } else {
+    	  %>
+	      <ul class="navbar-nav me-5">
+	      <li class="nav-item">
+	        <a class="nav-link active me-3" href="Upload_UI.jsp">상품 등록</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link active me-3" href="MyPage.jsp">내 상점</a>
+	      </li>
+	      </ul>
+    	  <%
+      }
+      %>
     </div>
   </div>
 </nav>
 
-<hr>
+<div style="margin-top:15px;"></div>
 
 <aside></aside>
 <div>

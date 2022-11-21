@@ -10,11 +10,6 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-rel="stylesheet"
-integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-crossorigin="anonymous">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <style>
 	img {
 	  width: 340px;
@@ -46,6 +41,16 @@ crossorigin="anonymous">
 </style>
 </head>
 <body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+rel="stylesheet"
+integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+crossorigin="anonymous">
+</script>
+
 <header>
 <div class="container">
 <div class="row">
@@ -66,12 +71,12 @@ crossorigin="anonymous">
 	// 관리자 로그인
 	} else if(sessionID.equals("admin")){
 %>
-	<div align="right" style="padding-right: 10%; padding-top:5px;"><a href="Logout.jsp">로그아웃</a> &emsp; <a href="manage.jsp">관리자페이지</a></div>
+	<div align="right" style="padding-right: 10%; padding-top:5px;"><a href="Logout.jsp">로그아웃</a> &emsp; <a href="Manage.jsp">관리자페이지</a></div>
 <%
 	// 로그인 했을 때 화면
 	}else {
 %>
-	<div align="right" style="padding-right: 10%; padding-top:5px;"><%=new UserDAO().getName(sessionID) %>님 &emsp; 예치금: <%=new UserDAO().account(sessionID) %>원 &emsp; <a href="Logout.jsp">로그아웃</a> &emsp; <a href="UserInfo_UI.jsp">내 정보</a> &emsp; <a href="MyPage.jsp">내 상점</a> &emsp; <a href="Upload_UI.jsp">상품 등록</a></div>
+	<div align="right" style="padding-right: 10%; padding-top:5px;"><%=new UserDAO().getName(sessionID) %>님 &emsp; 예치금: <%=new UserDAO().account(sessionID) %>원 &emsp; <a href="Logout.jsp">로그아웃</a> &emsp; <a href="UserInfo_UI.jsp">내 정보</a> &emsp;</div>
 <%
 	}
 %>
@@ -86,15 +91,43 @@ crossorigin="anonymous">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="d-flex" action="Main.jsp" method="post">
-        <input class="form-control me-2" type="search" name="_search" placeholder="상품명 또는 #판매자명" aria-label="Search">
+      <form class="d-flex me-auto" action="Main.jsp" method="post">
+        <input class="form-control me-2" type="text" name="_search" placeholder="상품명 또는 #판매자명" aria-label="Search">
         <input class="img_button bg-light" type="image" src="img/search.png" alt="검색">
       </form>
+      
+      <%
+      // 로그인 X
+      if(sessionID == null) {
+    	  %>
+          <ul class="navbar-nav me-5">
+          <li class="nav-item">
+            <a class="nav-link active me-3" onclick="alert('로그인이 필요합니다.');" href="Login_UI.jsp">상품 등록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active me-3" onclick="alert('로그인이 필요합니다.');" href="Login_UI.jsp">내 상점</a>
+          </li>
+          </ul>
+          <%
+      // 관리자 로그인
+      } else {
+    	  %>
+	      <ul class="navbar-nav me-5">
+	      <li class="nav-item">
+	        <a class="nav-link active me-3" href="Upload_UI.jsp">상품 등록</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link active me-3" href="MyPage.jsp">내 상점</a>
+	      </li>
+	      </ul>
+    	  <%
+      }
+      %>
     </div>
   </div>
 </nav>
 
-<div style="margin-top:15px;"><hr></div>
+<div style="margin-top:15px;"></div>
 
 <!-- 탭 -->
 <ul class="nav nav-tabs" id="myTab" role="tablist" style="padding-left: 12%;">
@@ -109,10 +142,7 @@ crossorigin="anonymous">
   </li>
 </ul>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-crossorigin="anonymous">
-</script>
+
 <aside></aside>
 <section>
 
@@ -495,6 +525,9 @@ String modalID2 = "";
   	</div>
 </div>
 
+<script>
+
+</script>
 
 
 </section>

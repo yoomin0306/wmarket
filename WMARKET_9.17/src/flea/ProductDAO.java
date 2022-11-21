@@ -230,7 +230,7 @@ public class ProductDAO {
     }
 	
 	public ArrayList<ProductVO> getBidList(String id){
-        String sql = "select b.pNumber, p.id, pName, image, repImg, pExplain, pCondition, price, Max(bidPrice) as bidPrice, date_a, date_b " + 
+        String sql = "select b.pNumber, p.id, pName, image, pExplain, pCondition, price, Max(bidPrice) as bidPrice, date_a, date_b " + 
         		"from product p left join bid b " + 
         		"on p.pNumber = b.pNumber " + 
         		"where b.pNumber < ? and b.id = '"+id+"' and available = 1 Group by pNumber";
@@ -261,7 +261,7 @@ public class ProductDAO {
     }
 	//마감된 상품(available = 0)도 볼 수 있게함
 	public ArrayList<ProductVO> getClosedBidList(String id){
-        String sql = "select b.pNumber, p.id, pName, image, repImg, pExplain, pCondition, price, Max(bidPrice) as bidPrice, date_a, date_b " + 
+        String sql = "select b.pNumber, p.id, pName, image, pExplain, pCondition, price, Max(bidPrice) as bidPrice, date_a, date_b " + 
         		"from product p left join bid b " + 
         		"on p.pNumber = b.pNumber " + 
         		"where b.pNumber < ? and b.id = '"+id+"' and available = 0 Group by pNumber";
