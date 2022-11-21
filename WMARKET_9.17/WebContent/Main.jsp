@@ -1,3 +1,5 @@
+<!-- 메인화면 -->
+
 <%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,10 +11,6 @@
 <head>
 <meta charset="UTF-8">
 <title>더블유마켓</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-rel="stylesheet"
-integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-crossorigin="anonymous">
 <style>
 	img {
 	  width: 340px;
@@ -52,10 +50,18 @@ crossorigin="anonymous">
 </style>
 </head>
 <body>
+
+<!-- 부트스트랩 다운로드 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+rel="stylesheet"
+integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 crossorigin="anonymous"></script>
+
 <script>
+<!-- date까지 남은 시간을 id에 실시간으로 출력하는 함수 -->
 const countDownTimer = function (id, date) {
 	var _vDate = new Date(date); // 전달 받은 일자
 	var _second = 1000;
@@ -65,10 +71,10 @@ const countDownTimer = function (id, date) {
 	var timer;
 
 	function showRemaining() {
-		var now = new Date();
+		var now = new Date();	// 현재시간
 		var distDt = _vDate - now;
 
-		if (distDt < 0) {
+		if (distDt < 0) {	// 남은 시간이 0보다 작은 경우
 			clearInterval(timer);
 			document.getElementById(id).textContent = '경매마감!!';
 			return;
@@ -81,20 +87,20 @@ const countDownTimer = function (id, date) {
 
 		//document.getElementById(id).textContent = date.toLocaleString() + "까지 : ";
 		
-		if (days < 1 && hours < 1) {
+		if (days < 1 && hours < 1) {	// 일과 시간이 1보다 작은 경우 >> n분 n초 출력
 			document.getElementById(id).textContent = minutes + '분 ';
 			document.getElementById(id).textContent += seconds + '초 남음';
-		} else if (days < 1) {
+		} else if (days < 1) {		// 일이 1보다 작은 경우 >> n시간 n분 출력
 			document.getElementById(id).textContent = hours + '시간 ';
 			document.getElementById(id).textContent += minutes + '분 남음';
-		} else {
+		} else {		// 모두 1 이상인 경우 >> n일 n시간 출력
 			document.getElementById(id).textContent = days + '일 ';
 			document.getElementById(id).textContent += hours + '시간 남음';
 		}
 		
 	}
 
-	timer = setInterval(showRemaining, 1000);
+	timer = setInterval(showRemaining, 1000);	// 함수를 1초마다 실행
 }
 
 </script>
