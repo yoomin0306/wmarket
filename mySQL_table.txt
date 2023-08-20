@@ -67,9 +67,9 @@ begin
 end
 
 
-# closing 함수를 1분마다 실행시켜주는 이벤트
+# closing 함수를 1초마다 실행시켜주는 이벤트
 create event closing	
-on schedule every 1 second		# 1분마다 실행
+on schedule every 1 second		# 1초마다 실행
 do
 select closing();
 
